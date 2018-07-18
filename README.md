@@ -8,7 +8,7 @@ In russian, for example, words endings depend not only on plural or singular, as
 ```
 npm i --save i18next-endings-postprocessor
 ```
-```
+```javascript
 import i18next      from 'i18next';
 import I18nEndings  from 'i18next-endings-postprocessor';
 
@@ -34,9 +34,7 @@ i18next.use(new I18nEndings()).init(config);
 ```
 
 ##### JS
-```
-
-
+```javascript
 i18next.t('key', { count: 1}); // -> some string 1 first variant
 i18next.t('key', { count: 2}); // -> some string 2 second variant
 i18next.t('key', { count: 5}); // -> some string 5 third variant
@@ -46,7 +44,6 @@ i18next.t('key', { count: 22}); // -> some string 22 second variant
 
 //float value always returns second variant
 i18next.t('key', { count: 1.1}); // -> some string 1.1 second variant
-
 ```
 
 
