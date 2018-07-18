@@ -5,7 +5,7 @@ In russian, for example, words endings depend not only on plural or singular, as
 
 ### Getting started
 
-```
+```bash
 npm i --save i18next-endings-postprocessor
 ```
 ```javascript
