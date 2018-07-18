@@ -49,8 +49,8 @@ i18next.t('key', { count: 1.1}); // -> some string 1.1 second variant
 
 ### Customize
 You can set formatting function for each language. If function for lang not set, will used default.
-```
-	i18next.use(new I18nEndings({
-		pt_BR: (num : number, arrOfVariants: Array<String>) : string
-	})).init(config);
+```javascript
+i18next.use(new I18nEndings({
+	pt_BR: (num : number, arrOfVariants: Array<String>) : string
+})).init(config);
 ```
