@@ -1,8 +1,10 @@
+import i18next from 'i18next';
+
 export default class I18nEndings {
 	
 	type = 'postProcessor';
 	name = 'endings';
-	search = /\[\[[0-9\.]+(\|[\wА-Яа-я ]+)+\]\]/gm;
+	search = /\[\[[0-9\.]+(\|.+)+\]\]/gm;
 	
 	
 	constructor(options) {
@@ -11,14 +13,15 @@ export default class I18nEndings {
 	
 	
 	static formatter(num, endings) {
-		const isFloat = num % 1 !== 0;
+		let textCase = 0;
 		
-		if ( isFloat ) {
-			return endings[1];
+		try {
+			textCase = i18next.services.pluralResolver.getRule(i18next.language).plurals(num)
+		} catch (e) {
+			console.log(e);
 		}
 		
-		const cases = [2, 0, 1, 1, 1, 2];
-		return endings[(num % 100 > 4 && num % 100 < 20) ? 2 : cases[(num % 10 < 5) ? num % 10 : 5]];
+		return endings[textCase];
 	}
 	
 	
@@ -43,7 +46,7 @@ export default class I18nEndings {
 				const number = parseFloat(values[0], 10);
 				
 				values.splice(0, 1);
-				const variant = this.getVariant(number, values, translator.language);
+				const variant = this.getVariant(number, values, translator.lang);
 				
 				value = value.replace(inc, variant);
 			});
