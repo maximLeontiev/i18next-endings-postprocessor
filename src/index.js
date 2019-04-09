@@ -4,7 +4,7 @@ export default class I18nEndings {
 	
 	type = 'postProcessor';
 	name = 'endings';
-	search = /\[\[[0-9\.]+(\|.+)+\]\]/gm;
+	search = /\[\[[0-9\.]+(\|.[^\[]+)+\]\]/gm;
 	
 	
 	constructor(options) {
