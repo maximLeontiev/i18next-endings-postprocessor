@@ -25,8 +25,6 @@ export default class I18nEndings {
 	process(value, key, options, translator) {
 		if (this.search.test(value)) {
 			const inclinations = value.match(this.search);
-			
-			console.log(translator);
 			inclinations.map((inc) => {
 				const values = inc.replace('[[', '').replace(']]', '').split('|');
 				const number = parseFloat(values[0], 10);
