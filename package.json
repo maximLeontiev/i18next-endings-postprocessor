@@ -1,6 +1,6 @@
 {
 	"name": "i18next-endings-postprocessor",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"description": "i18next endings postprocessor",
 	"main": "lib/index.js",
 	"scripts": {
