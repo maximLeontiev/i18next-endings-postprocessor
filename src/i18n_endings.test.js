@@ -29,9 +29,10 @@ describe("I18nEndings", () => {
     { count: 9, expected: "Пора покупать 9 билетов!" },
     { count: 10, expected: "Пора покупать 10 билетов!" },
     { count: 11, expected: "Пора покупать 11 билетов!" },
-    // special cases
+    // // special cases
+    { count: 0, expected: "Пора покупать 0 билетов!" },
     { count: 21, expected: "Пора покупать 21 билет!" },
-    { count: 25, expected: "Пора покупать 21 билетов!" },
+    { count: 25, expected: "Пора покупать 25 билетов!" },
   ])("count $count", ({ count, expected }) => {
     const result = t("key", { count });
 

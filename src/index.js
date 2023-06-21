@@ -12,14 +12,24 @@ export default class I18nEndings {
 			return this.options[translator.language](number, values);
 		}
 		
-		let textCase = 0;
-		
+		/**
+		 * @see {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/PluralRules/select}
+		 * @type {'zero' | 'one' | 'two' | 'few' | 'many' | 'other'}
+		 */
+		let textCase = 'few';
 		try {
-			textCase = translator.pluralResolver.getRule(translator.language).plurals(number);
+			textCase = translator.pluralResolver.getRule(translator.language).select(number);
 		} catch (e) {
 		}
+
+		const numericCase = {
+			'one': 0,
+			'few': 1,
+			'many': 2,
+			'other': 1,
+		}
 		
-		return values[textCase];
+		return values[numericCase[textCase] || 0];
 	}
 	
 	process(value, key, options, translator) {
