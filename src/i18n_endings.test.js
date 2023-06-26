@@ -10,6 +10,8 @@ const t = await i18next.use(new I18nEndings()).init({
     ru: {
       translation: {
         key: "Пора покупать {{count}} [[{{count}}|билет|билета|билетов]]!",
+        complex_key:
+          "Мы нашли всего {{countOne}} [[{{countOne}}|билет|билета|билетов]], из которых {{countTwo}} [[{{countTwo}}|билет|билета|билетов]] подходит лучше всего",
       },
     },
   },
@@ -37,5 +39,11 @@ describe("I18nEndings", () => {
     const result = t("key", { count });
 
     expect(result).toBe(expected);
+  });
+
+  test("handle two processing in single key", () => {
+    expect(t("complex_key", { countOne: 47, countTwo: 21 })).toBe(
+      "Мы нашли всего 47 билетов, из которых 21 билет подходит лучше всего"
+    );
   });
 });
