@@ -1,9 +1,12 @@
 {
 	"name": "i18next-endings-postprocessor",
-	"version": "2.0.0",
+	"version": "3.0.0",
 	"description": "i18next endings postprocessor",
 	"type": "module",
 	"main": "src/index.js",
+	"scripts": {
+		"test": "vitest run"
+	},
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/maximLeontiev/i18next-endings-postprocessor"
@@ -15,5 +18,9 @@
 	],
 	"author": "Maxim Leontiev",
 	"license": "MIT",
-	"homepage": "https://github.com/maximLeontiev/i18next-endings-postprocessor/blob/master/README.md"
+	"homepage": "https://github.com/maximLeontiev/i18next-endings-postprocessor/blob/master/README.md",
+	"devDependencies": {
+		"i18next": "^23.2.1",
+		"vitest": "^0.32.2"
+	}
 }
