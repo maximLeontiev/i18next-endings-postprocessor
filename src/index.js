@@ -14,6 +14,7 @@ export default class I18nEndings {
 			return this.options[translator.language](number, values);
 		}
 		
+		let numericCase = 0
 		try {
 			/**
 			 * @see {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/PluralRules/resolvedOptions}
@@ -35,7 +36,7 @@ export default class I18nEndings {
 			  availableCases.includes(item)
 			);
 	  
-			numbericCase = order.indexOf(textCase);
+			numericCase = order.indexOf(textCase);
 		  } catch (e) {}
 		
 		return values[numericCase];
