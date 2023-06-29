@@ -4,9 +4,7 @@
 
 In many languages, words endings depend not only on plural or singular form, but also on the number itself. For example, in Russian, the word "day" has three forms: "день", "дня" and "дней". This postprocessor allows you to use such forms in your translations.
 
-It built on top of native [Intl.PluralRules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/PluralRules).
-
-> Warning! `i18next` has [built-in pluralization support](https://www.i18next.com/translation-function/plurals). The only difference is that this postprocessor allows you to use many counters in the one string. It helps to safe full sentence meaning in one key.
+It built on top of native [Intl.PluralRules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/PluralRules). This postprocessor allows you to use many counters in the one string. It helps to safe full sentence meaning in one key.
 
 ### Getting started
 
