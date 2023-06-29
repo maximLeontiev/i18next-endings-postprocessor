@@ -1,3 +1,5 @@
+const REFERENCE_ORDER = ["zero", "one", "two", "few", "many", "other"];
+
 export default class I18nEndings {
 	type = 'postProcessor';
 	name = 'endings';
@@ -12,24 +14,32 @@ export default class I18nEndings {
 			return this.options[translator.language](number, values);
 		}
 		
-		/**
-		 * @see {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/PluralRules/select}
-		 * @type {'zero' | 'one' | 'two' | 'few' | 'many' | 'other'}
-		 */
-		let textCase = 'few';
+		let numericCase = 0
 		try {
-			textCase = translator.pluralResolver.getRule(translator.language).select(number);
-		} catch (e) {
-		}
-
-		const numericCase = {
-			'one': 0,
-			'few': 1,
-			'many': 2,
-			'other': 1,
-		}
+			/**
+			 * @see {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/PluralRules/resolvedOptions}
+			 * @type {Array<'zero' | 'one' | 'two' | 'few' | 'many' | 'other'>}
+			 */
+			const availableCases = translator.pluralResolver
+			  .getRule(translator.language)
+			  .resolvedOptions().pluralCategories;
+	  
+			/**
+			 * @see {@link https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/PluralRules/select}
+			 * @type {'zero' | 'one' | 'two' | 'few' | 'many' | 'other'}
+			 */
+			let textCase = translator.pluralResolver
+			  .getRule(translator.language)
+			  .select(number);
+	  
+			const order = REFERENCE_ORDER.filter((item) =>
+			  availableCases.includes(item)
+			);
+	  
+			numericCase = order.indexOf(textCase);
+		  } catch (e) {}
 		
-		return values[numericCase[textCase] || 0];
+		return values[numericCase];
 	}
 	
 	process(value, key, options, translator) {

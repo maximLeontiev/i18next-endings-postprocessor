@@ -17,7 +17,7 @@ const t = await i18next.use(new I18nEndings()).init({
   },
 });
 
-describe("I18nEndings", () => {
+describe("I18nEndings (ru)", () => {
   test.each([
     // simple cases
     { count: 1, expected: "Пора покупать 1 билет!" },
@@ -31,7 +31,7 @@ describe("I18nEndings", () => {
     { count: 9, expected: "Пора покупать 9 билетов!" },
     { count: 10, expected: "Пора покупать 10 билетов!" },
     { count: 11, expected: "Пора покупать 11 билетов!" },
-    // // special cases
+    // special cases
     { count: 0, expected: "Пора покупать 0 билетов!" },
     { count: 21, expected: "Пора покупать 21 билет!" },
     { count: 25, expected: "Пора покупать 25 билетов!" },
