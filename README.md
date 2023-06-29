@@ -6,7 +6,7 @@ In many languages, words endings depend not only on plural or singular form, but
 
 It built on top of native [Intl.PluralRules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/PluralRules).
 
-> Warning! `i18next` has [built-in pluralization support](https://www.i18next.com/translation-function/plurals). The only difference is that this postprocessor allows you to use many counters in the one string.
+> Warning! `i18next` has [built-in pluralization support](https://www.i18next.com/translation-function/plurals). The only difference is that this postprocessor allows you to use many counters in the one string. It helps to safe full sentence meaning in one key.
 
 ### Getting started
 
@@ -56,8 +56,6 @@ i18next.t("key", { count: 1.1 }); // -> some string 1.1 second variant
 ```
 
 ### Customize
-
-> Warning! We do not have any tests for this feature. Use it at your own risk.
 
 You can set formatting function for each language. If function for language not set, will use default.
 
