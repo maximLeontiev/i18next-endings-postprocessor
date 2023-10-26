@@ -39,7 +39,7 @@ export default class I18nEndings {
 			numericCase = order.indexOf(textCase);
 		  } catch (e) {}
 		
-		return values[numericCase] || values[values.length - 1];
+		return values[numericCase] ?? values[values.length - 1];
 	}
 	
 	process(value, key, options, translator) {
