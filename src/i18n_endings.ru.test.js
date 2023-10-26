@@ -12,6 +12,7 @@ const t = await i18next.use(new I18nEndings()).init({
         key: "Пора покупать {{count}} [[{{count}}|билет|билета|билетов]]!",
         complex_key:
           "Мы нашли всего {{countOne}} [[{{countOne}}|билет|билета|билетов]], из которых {{countTwo}} [[{{countTwo}}|билет|билета|билетов]] подходит лучше всего",
+        short_key: "Багаж для {{count}} [[{{count}}|пассажира|пассажиров]]",
       },
     },
   },
@@ -45,5 +46,9 @@ describe("I18nEndings (ru)", () => {
     expect(t("complex_key", { countOne: 47, countTwo: 21 })).toBe(
       "Мы нашли всего 47 билетов, из которых 21 билет подходит лучше всего"
     );
+  });
+
+  test("short_key should fallback undefined value to a last defined value", () => {
+    expect(t("short_key", { count: 5 })).toEqual("Багаж для 5 пассажиров");
   });
 });
